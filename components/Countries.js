@@ -1,5 +1,6 @@
-import { View, Text } from 'react-native'
-import React, {useState, useEffect} from 'react'
+import { View, Text, ScrollView } from 'react-native'
+import React, {useState, useEffect} from 'react';
+import Country from './Country';
 
 export default function countries() {
     const [countries, setCountries] = useState([]);
@@ -9,8 +10,13 @@ export default function countries() {
         .then(data=>setCountries(data))
     },[])
   return (
-    <View style={{backgroundColor: "red"}} >
+    <View >
       <Text>countries {countries.length}</Text>
+      <ScrollView>
+          {
+              countries.map(country=><Country country={country} />)
+          }
+      </ScrollView>
     </View>
   )
 }
